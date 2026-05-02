@@ -10,10 +10,10 @@ import com.taskmanager.demo.entity.User;
 import com.taskmanager.demo.repository.ProjectRepository;
 import com.taskmanager.demo.repository.UserRepository;
 
-import lombok.RequiredArgsConstructor;
+
 
 @Service
-@RequiredArgsConstructor
+
 public class ProjectService {
 
     private final ProjectRepository projectRepository;
