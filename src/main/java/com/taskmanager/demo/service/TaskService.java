@@ -13,10 +13,9 @@ import com.taskmanager.demo.repository.ProjectRepository;
 import com.taskmanager.demo.repository.TaskRepository;
 import com.taskmanager.demo.repository.UserRepository;
 
-import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
+
 public class TaskService {
 
     private final TaskRepository taskRepository;
