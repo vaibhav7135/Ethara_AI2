@@ -9,11 +9,11 @@ import com.taskmanager.demo.dto.ProjectDashboardResponse;
 import com.taskmanager.demo.dto.UserDashboardResponse;
 import com.taskmanager.demo.service.DashboardService;
 
-import lombok.RequiredArgsConstructor;
+
 
 @RestController
 @RequestMapping("/dashboard")
-@RequiredArgsConstructor
+
 public class DashboardController {
 
     private final DashboardService dashboardService;
