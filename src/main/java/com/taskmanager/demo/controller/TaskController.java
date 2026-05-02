@@ -16,11 +16,11 @@ import com.taskmanager.demo.entity.Task;
 import com.taskmanager.demo.enums.Status;
 import com.taskmanager.demo.service.TaskService;
 
-import lombok.RequiredArgsConstructor;
+
 
 @RestController
 @RequestMapping("/tasks")
-@RequiredArgsConstructor
+
 public class TaskController {
 
     private final TaskService taskService;

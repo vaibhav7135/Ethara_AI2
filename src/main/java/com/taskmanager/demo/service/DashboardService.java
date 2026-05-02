@@ -13,10 +13,8 @@ import com.taskmanager.demo.enums.Status;
 import com.taskmanager.demo.repository.ProjectRepository;
 import com.taskmanager.demo.repository.TaskRepository;
 
-import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
 public class DashboardService {
 
     private final TaskRepository taskRepository;
