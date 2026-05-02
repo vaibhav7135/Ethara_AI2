@@ -1,142 +1,253 @@
-# Ethara_AI
-# 🚀 Team Task Manager (Full-Stack Backend)
+# 🚀 Task Manager Backend (Spring Boot + JWT)
 
 ## 📌 Project Overview
 
-The **Team Task Manager** is a backend system that allows users to manage projects, assign tasks, and track progress with role-based access control.
-
-This system supports:
-
-* Admin and Member roles
-* Project creation and team management
-* Task assignment and tracking
-* Dashboard analytics
+This is a **Task Management System Backend** built using **Spring Boot**, **MySQL**, and **JWT Authentication**.
+It allows admins to create projects, assign members, and manage tasks with role-based access.
 
 ---
 
 ## 🛠️ Tech Stack
 
-* Backend: Spring Boot
-* Security: Spring Security + JWT
-* Database: MySQL
-* Build Tool: Maven
+* Java 17
+* Spring Boot
+* Spring Security (JWT)
+* Spring Data JPA (Hibernate)
+* MySQL (Railway Cloud DB)
+* Maven
+* Postman (API Testing)
+
+---
+
+## 🌐 Live Deployment
+
+* 🔗 Backend URL:
+  https://etharaai2-production.up.railway.app
+
+* 🗄️ Database: MySQL (Railway)
 
 ---
 
 ## 🔐 Features
 
-### 1. Authentication
+### 🔑 Authentication
 
-* User Signup & Login
-* JWT-based authentication
-* Role-based access (ADMIN / MEMBER)
-
----
-
-### 2. Project Management
-
-* Admin can create projects
-* Admin assigns members to projects
-* Members can view only assigned projects
+* User Registration
+* User Login
+* Password Encryption (BCrypt)
+* JWT-based Authentication
 
 ---
 
-### 3. Task Management
+### 👥 Role-Based Access
 
-* Create tasks within a project
-* Assign tasks to members
-* Update task status (PENDING, IN_PROGRESS, COMPLETED)
-* Due date support
+* ADMIN → create projects, assign members
+* MEMBER → view assigned projects & tasks
 
 ---
 
-### 4. Dashboard
+### 📁 Project Management
+
+* Admin creates project
+* Admin assigns members
+* Members can view assigned projects
+
+---
+
+### 📋 Task Management
+
+* Create task
+* Assign task to member
+* Update task status
+* Track progress
+
+---
+
+### 📊 Dashboard
 
 * Total tasks
 * Completed tasks
 * Pending tasks
 * Overdue tasks
-* Project-wise and user-wise analytics
 
 ---
 
-## 🔗 API Endpoints
+## ⚙️ API Endpoints
 
-### 🔐 Auth
+### 🔐 Auth APIs
 
-* POST `/auth/register`
-* POST `/auth/login`
+#### 1. Register
 
-### 🏢 Projects
+POST /auth/register
 
-* POST `/projects`
-* GET `/projects`
-* GET `/projects/my-projects/{userId}`
-
-### 📋 Tasks
-
-* POST `/tasks`
-* PUT `/tasks/{id}/status`
-* GET `/tasks/user/{userId}`
-
-### 📊 Dashboard
-
-* GET `/dashboard/project/{projectId}`
-* GET `/dashboard/user/{userId}`
-
----
-
-## ⚙️ Setup Instructions
-
-### 1. Clone Repository
-
-```bash
-git clone https://github.com/your-username/task-manager-backend.git
-cd task-manager-backend
+```json
+{
+  "name": "Admin",
+  "email": "admin@gmail.com",
+  "password": "1234"
+}
 ```
 
-### 2. Configure Database
+---
 
-Update `application.properties`:
+#### 2. Login
+
+POST /auth/login
+
+```json
+{
+  "email": "admin@gmail.com",
+  "password": "1234"
+}
+```
+
+---
+
+### 📁 Project APIs
+
+#### Create Project (ADMIN)
+
+POST /projects
+
+```json
+{
+  "name": "Project 1",
+  "description": "Demo project",
+  "adminId": 1,
+  "memberIds": [2,3]
+}
+```
+
+---
+
+#### Get All Projects
+
+GET /projects
+
+---
+
+#### Get My Projects
+
+GET /projects/my
+
+---
+
+### 📋 Task APIs
+
+#### Create Task
+
+POST /tasks
+
+```json
+{
+  "title": "Task 1",
+  "description": "Task description",
+  "projectId": 1,
+  "assignedTo": 2
+}
+```
+
+---
+
+#### Get Tasks
+
+GET /tasks
+
+---
+
+### 📊 Dashboard API
+
+#### Get Dashboard Data
+
+GET /dashboard
+
+---
+
+## 🔑 Authorization (IMPORTANT)
+
+All protected APIs require JWT token.
+
+### Add Header:
+
+```text
+Authorization: Bearer <YOUR_TOKEN>
+```
+
+---
+
+## 🧪 How to Test (Using Postman)
+
+1. Register a user
+2. Login
+3. Copy JWT token
+4. Add token in Authorization header
+5. Access APIs
+
+---
+
+## ⚠️ Notes
+
+* Root URL (`/`) will show **403 Forbidden** → This is expected (secured app)
+* Use Postman to test APIs
+* Ensure DB is connected via Railway
+
+---
+
+## 🚀 Deployment (Railway)
+
+1. Push code to GitHub
+2. Connect repo to Railway
+3. Add MySQL database
+4. Set environment variables:
 
 ```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/task_manager
-spring.datasource.username=root
-spring.datasource.password=your_password
+MYSQL_URL=jdbc:mysql://root:AUJcVhFTwbVrWhvMSWVGzRiraRVCCAEj@interchange.proxy.rlwy.net:49365/railway
+MYSQLUSER=root
+MYSQLPASSWORD=AUJcVhFTwbVrWhvMSWVGzRiraRVCCAEj
+
+
+
+
 ```
 
-### 3. Run Application
+5. Deploy
 
-```bash
-mvn spring-boot:run
+---
+
+## 📂 Project Structure
+
+```
+com.taskmanager.demo
+│
+├── controller
+├── service
+├── repository
+├── entity
+├── dto
+├── security
+├── util
 ```
 
 ---
 
-## 🚀 Deployment
+## 🎯 Future Enhancements
 
-* Backend deployed on Railway
-* Live URL: https://your-app.up.railway.app
-
----
-
-## 🎥 Demo Video
-
-(Add your demo video link here)
+* Frontend (React.js)
+* Notifications
+* File attachments
+* Real-time chat
 
 ---
 
 ## 👨‍💻 Author
 
-* Vaibhav Magar
+Vaibhav Magar
+BE Computer Engineering
 
 ---
 
-## ⭐ Notes
+## 💬 Viva Line
 
-This project demonstrates:
+“This project is a role-based task management system built using Spring Boot and JWT authentication, deployed on Railway with MySQL.”
 
-* REST API design
-* Secure authentication (JWT)
-* Role-based authorization
-* Real-world project & task management system
+---
